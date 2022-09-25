@@ -12,7 +12,7 @@ public class Server {
         while (true) {
             Socket clientSocket = serverSocket.accept(); //Ждем подключения
 
-            try (PrintWriter out = new PrintWriter(clientSocket.getOutputStream());
+            try (PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
                  BufferedReader in = new BufferedReader(
                          new InputStreamReader(clientSocket.getInputStream()));
                  clientSocket) {
@@ -23,8 +23,6 @@ public class Server {
                 long value = fibValue(fibNumber);
 
                 out.println(String.format("Hi, your fibValue is %d", value)); //Отправляем инф-ю клиенту
-                out.flush();
-
             }
 
         }
