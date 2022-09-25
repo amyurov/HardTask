@@ -14,7 +14,8 @@ public class Server {
 
             try (PrintWriter out = new PrintWriter(clientSocket.getOutputStream());
                  BufferedReader in = new BufferedReader(
-                         new InputStreamReader(clientSocket.getInputStream()))) {
+                         new InputStreamReader(clientSocket.getInputStream()));
+                 clientSocket) {
 
                 System.out.println("New connection accepted");
                 int fibNumber = Integer.parseInt(in.readLine()); //Получаем переданную инфу от клиента и записываем в переменную

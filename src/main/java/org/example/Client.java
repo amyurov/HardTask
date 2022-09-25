@@ -12,14 +12,14 @@ public class Client {
     public static void main(String[] args) throws IOException {
         String Ip = "127.0.0.1";
         int port = 8888;
-        Socket clientSocket = new Socket(Ip, port);
 
-        try (PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+        try (Socket clientSocket = new Socket(Ip, port);
+             PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
              BufferedReader in = new BufferedReader(
-                     new InputStreamReader(clientSocket.getInputStream()))) {
+                     new InputStreamReader(clientSocket.getInputStream()));
+             Scanner sc = new Scanner(System.in)) {
 
             System.out.println("Введите искомое число фибонначи");
-            Scanner sc = new Scanner(System.in);
 
             int fibNumber = sc.nextInt();
 
